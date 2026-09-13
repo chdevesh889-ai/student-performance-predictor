@@ -1,30 +1,34 @@
 # 🎓 Student Performance Predictor
 
-A machine learning project that predicts a student's exam score based on academic and lifestyle factors using Linear Regression.
+A machine learning application that predicts a student's exam score based on academic and lifestyle factors using **Linear Regression**.
+
+The project demonstrates an end-to-end machine learning workflow, from data generation and exploratory data analysis to model training, evaluation, model serialization, and deployment through a Streamlit web application.
+
+---
 
 ## 📌 Project Overview
 
-The goal of this project is to build an end-to-end machine learning application that predicts a student's expected exam score from:
+The goal of this project is to predict a student's expected exam score using the following factors:
 
-- Study Hours
-- Attendance
-- Previous Marks
-- Assignments Completed
-- Sleep Hours
+- 📚 Study Hours
+- 🏫 Attendance Percentage
+- 📝 Previous Marks
+- ✅ Assignments Completed
+- 😴 Sleep Hours
 
-The project covers the complete ML workflow:
+The project follows this workflow:
 
-**Data Generation → Data Analysis → Model Training → Evaluation → Model Saving → Prediction → Web Application**
+**Data Generation → Exploratory Data Analysis → Train/Test Split → Model Training → Evaluation → Model Saving → Prediction Module → Streamlit Application**
+
+---
 
 ## 🧠 Machine Learning Approach
 
-This is a **Supervised Learning** problem.
-
 ### Problem Type
 
-**Regression**
+**Supervised Learning → Regression**
 
-The target variable, `exam_score`, is a continuous numerical value.
+The target variable, `exam_score`, is a continuous numerical value, making this a regression problem.
 
 ### Algorithm
 
@@ -32,9 +36,14 @@ The target variable, `exam_score`, is a continuous numerical value.
 
 The model learns the relationship between the input features and the student's exam score.
 
+---
+
 ## 📊 Dataset
 
-The dataset contains **500 student records** with 5 input features and 1 target variable.
+The dataset contains **500 student records** with:
+
+- **5 input features**
+- **1 target variable**
 
 ### Features
 
@@ -48,31 +57,44 @@ The dataset contains **500 student records** with 5 input features and 1 target 
 
 ### Target
 
-`exam_score` — predicted examination score.
+`exam_score` — the student's predicted examination score.
 
-> **Note:** The dataset used in this project is synthetically generated for learning and demonstration purposes.
+> **Note:** The dataset used in this project is synthetically generated for learning and demonstration purposes. It is not collected from real students.
 
-## 🔍 Data Analysis
+---
 
-The project includes exploratory data analysis using:
+## 🔍 Exploratory Data Analysis
 
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+The project uses **Pandas, NumPy, Matplotlib, and Seaborn** for data analysis and visualization.
 
-Correlation analysis showed that **study hours had the strongest linear relationship with exam score** among the features in this synthetic dataset.
+### Study Hours vs Exam Score
 
-## 🤖 Model Training
+The scatter plot shows the relationship between study hours and exam scores. The dataset shows a positive relationship, where higher study hours generally correspond to higher exam scores.
+
+![Study Hours vs Exam Score](screenshots/study_hours_vs_score.png)
+
+### Feature Correlation Heatmap
+
+The correlation heatmap shows the linear relationship between the numerical features.
+
+In this synthetic dataset, `study_hours` has the strongest correlation with `exam_score`.
+
+![Feature Correlation Heatmap](screenshots/correlation_heatmap.png)
+
+> **Important:** Correlation indicates a statistical relationship; it does not prove causation.
+
+---
+
+## ⚙️ Model Training
 
 The dataset was divided into:
 
 - **80% training data**
 - **20% testing data**
 
-A Linear Regression model was trained using Scikit-learn.
+A Linear Regression model from **Scikit-learn** was trained using the training dataset.
 
-The trained model was then saved as:
+The trained model was saved using Joblib:
 
 ```text
 models/student_performance_model.pkl
